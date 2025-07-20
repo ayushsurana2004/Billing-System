@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billing & Inventory System</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="nav">
+        <a href="#" onclick="showSection('customers'); return false;">Customers</a>
+        <a href="#" onclick="showSection('products'); return false;">Products</a>
+        <a href="#" onclick="showSection('invoices'); return false;">Invoices</a>
+    </div>
+
+    <div class="container">
+        <!-- Customer Section -->
+        <div id="customers" class="section active">
+            <h2>Customer Management</h2>
+            
+            <!-- Add Customer Form -->
+            <div class="form-container">
+                <h3>Add New Customer</h3>
+                <form id="customerForm">
+                    <div class="form-group">
+                        <label for="customerName">Name:</label>
+                        <input type="text" id="customerName" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="customerPhone">Phone:</label>
+                        <input type="text" id="customerPhone" name="phone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="customerAddress">Address:</label>
+                        <input type="text" id="customerAddress" name="address">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="customerCity">City:</label>
+                        <input type="text" id="customerCity" name="city">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="customerState">State:</label>
+                        <input type="text" id="customerState" name="state">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="customerZip">ZIP:</label>
+                        <input type="number" id="customerZip" name="zip">
+                    </div>
+                    
+                    <button type="submit">Add Customer</button>
+                </form>
+            </div>
+
+            <!-- Customer List -->
+            <div class="list-container">
+                <h3>Customer List</h3>
+                <div class="search-container">
+                    <input type="text" id="customerSearchInput" placeholder="Search by phone number..." class="search-input">
+                    <button id="searchCustomerBtn" class="search-btn">Search</button>
+                    <button id="loadCustomersBtn" class="load-btn">Load All</button>
+                </div>
+                <div id="customerList" class="customer-list">
+                    <!-- Customers will be displayed here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Section -->
+        <div id="products" class="section">
+            <h2>Product Management</h2>
+            
+            <!-- Add Product Form -->
+            <div class="form-container">
+                <h3>Add New Product</h3>
+                <form id="productForm">
+                    <div class="form-group">
+                        <label for="productName">Name:</label>
+                        <input type="text" id="productName" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="productBarcode">Barcode:</label>
+                        <input type="text" id="productBarcode" name="barcode" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="productPrice">Price (₹):</label>
+                        <input type="number" id="productPrice" name="price" step="0.01" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="productQuantity">Quantity:</label>
+                        <input type="number" id="productQuantity" name="quantity" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="productSize">Size:</label>
+                        <input type="text" id="productSize" name="size" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="productCategory">Category:</label>
+                        <select id="productCategory" name="category" required>
+                            <option value="">Select Category</option>
+                            <option value="men">Men</option>
+                            <option value="women">Women</option>
+                            <option value="kids">Kids</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="productSupplier">Supplier:</label>
+                        <input type="text" id="productSupplier" name="supplier">
+                    </div>
+                    
+                    <button type="submit">Add Product</button>
+                </form>
+            </div>
+
+            <!-- Product List -->
+            <div class="list-container">
+                <h3>Product List</h3>
+                <button id="loadProductsBtn" class="load-btn">Load Products</button>
+                <div id="productList" class="product-list">
+                    <!-- Products will be displayed here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Invoice Section -->
+        <div id="invoices" class="section">
+            <h2>Invoice Management</h2>
+            
+            <!-- Create Invoice Form -->
+            <div class="form-container">
+                <h3>Create New Invoice</h3>
+                <form id="invoiceForm">
+                    <div class="form-group">
+                        <label for="invoiceCustomerPhone">Customer Phone:</label>
+                        <div class="search-container">
+                            <input type="text" id="invoiceCustomerPhone" name="customerPhone" placeholder="Enter phone number..." class="search-input" required>
+                            <button type="button" id="searchInvoiceCustomerBtn" class="search-btn">Search</button>
+                        </div>
+                    </div>
+                    <div id="invoiceCustomerDetails"></div>
+                    <div id="invoiceAddCustomerForm" style="display:none;"></div>
+                    <div class="form-group">
+                        <button type="button" id="addCustomerOnlyBtn" class="add-customer-only-btn" style="display:none;">Add Customer Only (Skip Invoice)</button>
+                    </div>
+                    <div class="form-group">
+                        <label for="invoiceDate">Invoice Date:</label>
+                        <input type="date" id="invoiceDate" name="date" required>
+                    </div>
+                    <div class="invoice-items-section">
+                        <h4>Add Products to Invoice</h4>
+                        <div class="product-selection-tabs">
+                            <button type="button" class="tab-btn active" onclick="switchProductTab('dropdown')">Select from List</button>
+                            <button type="button" class="tab-btn" onclick="switchProductTab('barcode')">Scan Barcode</button>
+                        </div>
+                        
+                        <!-- Dropdown Selection Tab -->
+                        <div id="dropdownTab" class="product-tab active">
+                            <div class="add-item-row">
+                                <div class="form-group">
+                                    <label for="productSelect">Product:</label>
+                                    <select id="productSelect" name="product">
+                                        <option value="">Select a product...</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="itemQuantity">Quantity:</label>
+                                    <input type="number" id="itemQuantity" name="quantity" min="1" value="1">
+                                    <span id="dropdownStockInfo" style="font-size:12px;color:#888;margin-left:8px;"></span>
+                                </div>
+                                <button type="button" id="addItemBtn" class="add-item-btn">Add Item</button>
+                            </div>
+                        </div>
+                        
+                        <!-- Barcode Selection Tab -->
+                        <div id="barcodeTab" class="product-tab">
+                            <div class="add-item-row">
+                                <div class="form-group">
+                                    <label for="barcodeInput">Barcode:</label>
+                                    <input type="text" id="barcodeInput" name="barcode" placeholder="Enter or scan barcode...">
+                                </div>
+                                <div class="form-group">
+                                    <label for="barcodeQuantity">Quantity:</label>
+                                    <input type="number" id="barcodeQuantity" name="barcodeQuantity" min="1" value="1">
+                                </div>
+                                <button type="button" id="addBarcodeItemBtn" class="add-item-btn">Add Item</button>
+                            </div>
+                            <div id="barcodeProductInfo" class="barcode-product-info" style="display:none;">
+                                <!-- Product info will be displayed here when barcode is found -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="invoice-items-list">
+                        <h4>Invoice Items</h4>
+                        <div id="invoiceMessage" style="margin-bottom:10px;color:#d32f2f;font-weight:bold;"></div>
+                        <div id="invoiceItemsList" class="items-list">
+                            <!-- Invoice items will be displayed here -->
+                        </div>
+                        <div id="invoiceDebug" style="margin-top:10px;color:#1976d2;font-size:12px;"></div>
+                    </div>
+                    <div class="invoice-summary">
+                        <div class="summary-row">
+                            <span>Subtotal:</span>
+                            <span id="subtotal">₹0.00</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>GST Amount:</span>
+                            <span id="gstAmount">₹0.00</span>
+                        </div>
+                        <div class="summary-row">
+                            <label for="discountPercent">Discount %:</label>
+                            <input type="number" id="discountPercent" name="discountPercent" min="0" max="100" value="0" step="0.01">
+                        </div>
+                        <div class="summary-row">
+                            <label for="discountAmount">Discount Amount:</label>
+                            <input type="number" id="discountAmount" name="discountAmount" min="0" value="0" step="0.01">
+                            <span style="font-size:12px;color:#888;margin-left:8px;">(Edit % or amount)</span>
+                        </div>
+                        <div class="summary-row total-row">
+                            <span>Total Amount:</span>
+                            <span id="totalAmount">₹0.00</span>
+                        </div>
+                    </div>
+                    <button type="submit">Create Invoice</button>
+                </form>
+            </div>
+
+            <!-- Invoice List -->
+            <div class="list-container">
+                <h3>Invoice List</h3>
+                <div class="search-container">
+                    <input type="text" id="invoiceSearchInput" placeholder="Search by customer phone..." class="search-input">
+                    <button id="searchInvoiceBtn" class="search-btn">Search</button>
+                    <button id="loadInvoicesBtn" class="load-btn">Load All</button>
+                </div>
+                <div id="invoiceList" class="invoice-list">
+                    <!-- Invoices will be displayed here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Invoice Details Modal -->
+    <div id="invoiceDetailsModal" class="modal" style="display:none;">
+        <div class="modal-content" id="invoiceDetailsContent">
+            <span class="close" id="closeInvoiceModal">&times;</span>
+            <div id="invoiceDetailsBody">
+                <!-- Invoice details will be rendered here -->
+            </div>
+            <button id="printInvoiceBtn" class="print-btn">Print Invoice</button>
+        </div>
+    </div>
+
+    <!-- Edit Invoice Modal -->
+    <div id="editInvoiceModal" class="modal" style="display:none;">
+        <div class="modal-content" id="editInvoiceContent">
+            <span class="close" id="closeEditInvoiceModal">&times;</span>
+            <form id="editInvoiceForm">
+                <h2>Edit Invoice</h2>
+                <div id="editInvoiceFields">
+                    <!-- Form fields will be rendered here by JS -->
+                </div>
+                <button type="submit" class="print-btn">Save Changes</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

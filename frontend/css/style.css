@@ -1,0 +1,873 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f5f5f5;
+}
+
+.nav {
+    background-color: #333;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.nav a {
+    color: white;
+    text-decoration: none;
+    margin-right: 20px;
+    padding: 10px 15px;
+}
+
+.nav a:hover {
+    background-color: #555;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.section {
+    display: none;
+}
+
+.section.active {
+    display: block;
+}
+
+/* Form Styling */
+.form-container {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+}
+
+.form-container h3 {
+    margin-top: 0;
+    color: #333;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* List Container Styling */
+.list-container {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.list-container h3 {
+    margin-top: 0;
+    color: #333;
+    border-bottom: 2px solid #28a745;
+    padding-bottom: 10px;
+}
+
+.load-btn {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.load-btn:hover {
+    background-color: #218838;
+}
+
+/* Search Container Styling */
+.search-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    align-items: center;
+}
+
+.search-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+.search-btn {
+    background-color: #17a2b8;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.search-btn:hover {
+    background-color: #138496;
+}
+
+.customer-list {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.customer-item {
+    background-color: white;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.customer-item h4 {
+    margin: 0 0 10px 0;
+    color: #333;
+    font-size: 16px;
+}
+
+.customer-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    font-size: 14px;
+    color: #666;
+}
+
+.customer-details span {
+    font-weight: bold;
+    color: #333;
+}
+
+.customer-actions {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.action-btn {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.edit-btn {
+    background-color: #ffc107;
+    color: #333;
+}
+
+.edit-btn:hover {
+    background-color: #e0a800;
+}
+
+.delete-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: #c82333;
+}
+
+/* Product List Styling */
+.product-list {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.product-item {
+    background-color: white;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.product-item h4 {
+    margin: 0 0 10px 0;
+    color: #333;
+    font-size: 16px;
+}
+
+.product-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.product-details span {
+    font-weight: bold;
+    color: #333;
+}
+
+.product-price-info {
+    background-color: #f8f9fa;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.price-breakdown {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    font-size: 12px;
+}
+
+.price-breakdown .price-item {
+    text-align: center;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+.price-breakdown .base-price {
+    background-color: #e3f2fd;
+    color: #1976d2;
+}
+
+.price-breakdown .gst-amount {
+    background-color: #fff3e0;
+    color: #f57c00;
+}
+
+.price-breakdown .total-price {
+    background-color: #e8f5e8;
+    color: #388e3c;
+    font-weight: bold;
+}
+
+/* Select dropdown styling */
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+    background-color: white;
+}
+
+.form-group select:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+/* Invoice Form Styling */
+.invoice-items-section {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    border: 1px solid #e9ecef;
+}
+
+.invoice-items-section h4 {
+    margin-top: 0;
+    color: #495057;
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 8px;
+}
+
+.add-item-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr auto;
+    gap: 15px;
+    align-items: end;
+}
+
+.add-item-btn {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.add-item-btn:hover {
+    background-color: #218838;
+}
+
+/* Product Selection Tabs */
+.product-selection-tabs {
+    display: flex;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.tab-btn {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-bottom: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    color: #6c757d;
+    border-radius: 4px 4px 0 0;
+    margin-right: 5px;
+}
+
+.tab-btn:hover {
+    background-color: #e9ecef;
+    color: #495057;
+}
+
+.tab-btn.active {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+.product-tab {
+    display: none;
+}
+
+.product-tab.active {
+    display: block;
+}
+
+/* Barcode Product Info */
+.barcode-product-info {
+    background-color: #e3f2fd;
+    border: 1px solid #bbdefb;
+    border-radius: 4px;
+    padding: 12px;
+    margin-top: 10px;
+    color: #1976d2;
+}
+
+.barcode-product-info h5 {
+    margin: 0 0 8px 0;
+    color: #1565c0;
+    font-size: 16px;
+}
+
+.barcode-product-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    font-size: 14px;
+}
+
+.barcode-product-details span {
+    font-weight: bold;
+    color: #1565c0;
+}
+
+.invoice-items-list {
+    margin-bottom: 20px;
+}
+
+.invoice-items-list h4 {
+    color: #495057;
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 8px;
+    margin-bottom: 15px;
+}
+
+.items-list {
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+}
+
+.invoice-item {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr auto;
+    gap: 10px;
+    padding: 10px;
+    border-bottom: 1px solid #dee2e6;
+    align-items: center;
+    background-color: white;
+}
+
+.invoice-item:last-child {
+    border-bottom: none;
+}
+
+.invoice-item-header {
+    font-weight: bold;
+    background-color: #f8f9fa;
+    color: #495057;
+}
+
+.invoice-item .item-name {
+    font-weight: bold;
+    color: #333;
+}
+
+.invoice-item .item-price {
+    color: #007bff;
+    font-weight: bold;
+}
+
+.invoice-item .item-total {
+    color: #28a745;
+    font-weight: bold;
+}
+
+.remove-item-btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    padding: 5px 8px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.remove-item-btn:hover {
+    background-color: #c82333;
+}
+
+.invoice-summary {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 4px;
+    border: 1px solid #e9ecef;
+    margin-bottom: 20px;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 5px 0;
+}
+
+.summary-row:last-child {
+    margin-bottom: 0;
+}
+
+.summary-row label {
+    font-weight: bold;
+    color: #495057;
+}
+
+.summary-row input {
+    width: 100px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    text-align: right;
+}
+
+.summary-row input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 3px rgba(0, 123, 255, 0.3);
+}
+
+.total-row {
+    border-top: 2px solid #007bff;
+    padding-top: 10px;
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #007bff;
+}
+
+/* Invoice List Styling */
+.invoice-list {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.invoice-list-item {
+    background-color: white;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.invoice-list-item h4 {
+    margin: 0 0 10px 0;
+    color: #333;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.invoice-number {
+    color: #007bff;
+    font-weight: bold;
+}
+
+.invoice-date {
+    color: #6c757d;
+    font-size: 14px;
+}
+
+.invoice-customer {
+    margin-bottom: 10px;
+    padding: 8px;
+    background-color: #f8f9fa;
+    border-radius: 3px;
+}
+
+.invoice-customer span {
+    font-weight: bold;
+    color: #495057;
+}
+
+.invoice-items-summary {
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #666;
+}
+
+.invoice-totals {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.invoice-totals .total-item {
+    text-align: center;
+    padding: 5px;
+    border-radius: 3px;
+    font-weight: bold;
+}
+
+.invoice-totals .subtotal {
+    background-color: #e3f2fd;
+    color: #1976d2;
+}
+
+.invoice-totals .gst {
+    background-color: #fff3e0;
+    color: #f57c00;
+}
+
+.invoice-totals .final-total {
+    background-color: #e8f5e8;
+    color: #388e3c;
+}
+
+.invoice-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.invoice-actions .action-btn {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.view-btn {
+    background-color: #17a2b8;
+    color: white;
+}
+
+.view-btn:hover {
+    background-color: #138496;
+} 
+
+/* Invoice Customer Details & Add Form */
+#invoiceCustomerDetails {
+    margin-bottom: 15px;
+    background: #e8f5e8;
+    border: 1px solid #b2dfdb;
+    border-radius: 4px;
+    padding: 12px 16px;
+    color: #388e3c;
+    font-size: 15px;
+    display: none;
+}
+
+#invoiceCustomerDetails.active {
+    display: block;
+}
+
+#invoiceAddCustomerForm {
+    margin-bottom: 15px;
+    background: #fff3e0;
+    border: 1px solid #ffe0b2;
+    border-radius: 4px;
+    padding: 16px 18px;
+    color: #f57c00;
+    font-size: 15px;
+}
+
+#invoiceAddCustomerForm input {
+    margin-bottom: 8px;
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    font-size: 14px;
+}
+
+#invoiceAddCustomerForm label {
+    font-weight: bold;
+    color: #f57c00;
+    margin-top: 8px;
+}
+
+#invoiceAddCustomerForm button {
+    background-color: #28a745;
+    color: white;
+    padding: 8px 18px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 8px;
+}
+
+#invoiceAddCustomerForm button:hover {
+    background-color: #218838;
+}
+
+.add-customer-only-btn {
+    background-color: #6c757d;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.add-customer-only-btn:hover {
+    background-color: #5a6268;
+} 
+
+/* Invoice Details Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 40px auto;
+    padding: 30px 30px 20px 30px;
+    border: 1px solid #888;
+    width: 90%;
+    max-width: 600px;
+    border-radius: 8px;
+    position: relative;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+}
+
+.close {
+    color: #aaa;
+    position: absolute;
+    right: 18px;
+    top: 10px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.close:hover { color: #d32f2f; }
+
+.print-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 24px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+    margin-top: 18px;
+}
+.print-btn:hover { background-color: #0056b3; }
+
+/* Print Styles */
+@media print {
+    body * { visibility: hidden !important; }
+    #invoiceDetailsModal, #invoiceDetailsModal * { visibility: visible !important; }
+    #invoiceDetailsModal { position: absolute !important; left: 0; top: 0; width: 100% !important; height: auto !important; background: none !important; box-shadow: none !important; }
+    .modal-content { box-shadow: none !important; border: none !important; }
+    .close, .print-btn { display: none !important; }
+} 
+
+/* Edit Invoice Modal Enhancements */
+#editInvoiceModal .modal-content {
+    background: #f9f9fb;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+    padding: 32px 32px 24px 32px;
+    max-width: 540px;
+    width: 95%;
+    position: relative;
+}
+#editInvoiceModal h2 {
+    margin-top: 0;
+    margin-bottom: 18px;
+    font-size: 1.5rem;
+    color: #007bff;
+    letter-spacing: 1px;
+}
+#editInvoiceFields label {
+    display: block;
+    margin-bottom: 12px;
+    font-weight: 500;
+    color: #333;
+}
+#editInvoiceFields input[type="text"],
+#editInvoiceFields input[type="number"] {
+    width: 70%;
+    padding: 7px 10px;
+    margin-left: 8px;
+    border: 1px solid #cfd8dc;
+    border-radius: 5px;
+    font-size: 1rem;
+    background: #fff;
+    transition: border 0.2s;
+}
+#editInvoiceFields input:focus {
+    border: 1.5px solid #007bff;
+    outline: none;
+}
+#editInvoiceFields h4 {
+    margin-top: 22px;
+    margin-bottom: 10px;
+    color: #444;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+}
+.edit-product-block {
+    background: #f1f6fa;
+    border-radius: 7px;
+    border: 1px solid #e3e8ee;
+    padding: 10px 12px 8px 12px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.edit-product-block input[type="number"] {
+    width: 60px;
+    margin-left: 0;
+}
+#editInvoiceForm .modal-btn-row {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 18px;
+}
+#editInvoiceForm .print-btn {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 28px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+#editInvoiceForm .print-btn:hover {
+    background: #0056b3;
+}
+#editInvoiceForm .cancel-btn {
+    background: #e0e0e0;
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 22px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+#editInvoiceForm .cancel-btn:hover {
+    background: #bdbdbd;
+} 
